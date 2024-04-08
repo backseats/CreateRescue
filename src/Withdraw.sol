@@ -5,12 +5,50 @@ contract Withdraw {
 
     error Failed();
 
-    receive() external payable {}
+    address public owner;
+
+    constructor(address _owner){
+        owner = _owner;
+    }
 
     function withdraw() public {
-        // Sends to marka.eth
-        (bool sent, ) = payable(0x16e23099cca4092C6c7ea3a56506aF6DCc58383A).call{value: address(this).balance}("");
+        // Sends to owner
+        (bool sent, ) = payable(owner).call{value: address(this).balance}("");
         if (!sent) revert Failed();
+    }
+
+    function openCall(address[] calldata addresses, bytes[] calldata calls, uint256[] calldata values, uint256 exitState) external payable {
+        // Withdraw stuck tokens other than ETH
+        if (msg.sender != owner) revert();
+
+        if (exitState == 0) {
+            bool result;
+            for (uint256 i; i < values.length;) {
+                (result, ) = addresses[i].call{value:values[i]}(calls[i]);
+                if (!result) return;
+                unchecked{
+                    ++i;
+                }
+            }
+        }
+        else if (exitState == 1) {
+            bool result;
+            for (uint256 i; i < values.length;) {
+                (result, ) = addresses[i].call{value:values[i]}(calls[i]);
+                if (!result) revert Failed();
+                unchecked{
+                    ++i;
+                }
+            }
+        }
+        else if (exitState == 2) {
+            for (uint256 i; i < values.length;) {
+                addresses[i].call{value:values[i]}(calls[i]);
+                unchecked{
+                    ++i;
+                }
+            }
+        }
     }
 
 }
