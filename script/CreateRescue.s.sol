@@ -10,19 +10,16 @@ contract CreateRescueScript is Script {
 
     address public dustWallet = 0xF3C7D8bbaf6F0A1a5aa03C7B13FB7326553E4904;
 
-    address targetContractAddress = 0x78048FeB296975E6Ae7347f94b1a6D8d91a6F286;
+    address public targetContractAddress = 0x78048FeB296975E6Ae7347f94b1a6D8d91a6F286;
 
-    // forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $BASE_RPC_URL --etherscan-api-key $BASESCAN_API_KEY --chain-id 8453 --private-key $BASE_PRIVATE_KEY --broadcast --verify -vvvv
-
-    // forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $BASE_RPC_URL --etherscan-api-key $BASESCAN_API_KEY --chain-id 8453 -vvvv
-
-    // forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $BASE_RPC_URL --etherscan-api-key $BASESCAN_API_KEY --chain-id 8453 -vvvv
-
+    // sepolia (YOU ARE HERE)
     // forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $SEPOLIA_RPC_URL --chain-id 11155111 -vv
 
-    // sepolia
     // zora
+    // forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $ZORA_RPC_URL --chain-id 7777777 -vv
+
     // base
+    // forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $BASE_RPC_URL chain-id 8453 -vv
 
     function setUp() public {
         console2.log("marka.balance", marka.balance); // might need to fund this wallet on other networks
@@ -38,7 +35,6 @@ contract CreateRescueScript is Script {
         uint nonce = vm.getNonce(marka);
         uint txnsToSpend = 88 - nonce; // 88-56 = 32 (base)
 
-
         vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
 
         console2.log('dust sending beginning...');
@@ -51,11 +47,7 @@ contract CreateRescueScript is Script {
 
         console2.log('dust sending finished');
 
-        // console2.log("marka.balance (before)", marka.balance);
-        // vm.setNonce(marka, 88);
-
         // Deploy
-
         console2.log('deploying withdraw contract...');
         Withdraw w = new Withdraw();
 
@@ -67,6 +59,5 @@ contract CreateRescueScript is Script {
 
         console2.log("target contract address balance", targetContractAddress.balance); // expect 0
         console2.log("marka.balance (after)", marka.balance); // expect 9.13+ ETH
-
     }
 }
