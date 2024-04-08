@@ -48,6 +48,10 @@ contract Withdraw {
 
 * Clone the repo
 
+* Copy `.env.example` into a new `.env` file
+
+* Add in the values and run `source .env` in your console to load in env vars
+
 * `forge build`
 
 * See notes in the `test` and `script` dirs on how to run each.
