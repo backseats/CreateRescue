@@ -40,8 +40,8 @@ contract CreateRescueScript is Script {
 
 
         vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
-        // i wanna do - 1 just to test it
-        // maybe i should do it on other networks to test it first, base last
+
+        console2.log('dust sending beginning...');
         for (uint256 i = 0; i < txnsToSpend; i++) {
             // uint _nonce = nonce + i;
             // console2.log('sending payment with nonce', _nonce);
@@ -49,13 +49,18 @@ contract CreateRescueScript is Script {
             assert(sent);
         }
 
+        console2.log('dust sending finished');
+
         // console2.log("marka.balance (before)", marka.balance);
         // vm.setNonce(marka, 88);
 
         // Deploy
 
+        console2.log('deploying withdraw contract...');
         Withdraw w = new Withdraw();
+
         // Withdraw
+        console2.log('withdrawing...');
         w.withdraw();
 
         vm.stopBroadcast();
