@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Script, console2} from "forge-std/Script.sol";
-import { Withdraw } from "../src/Withdraw.sol";
+import {Withdraw} from "../src/Withdraw.sol";
 
 contract CreateRescueScript is Script {
 
@@ -12,21 +12,28 @@ contract CreateRescueScript is Script {
 
     address public targetContractAddress = 0x78048FeB296975E6Ae7347f94b1a6D8d91a6F286;
 
-    // sepolia (YOU ARE HERE)
-    // forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $SEPOLIA_RPC_URL --chain-id 11155111 -vv
+    // run once for each network
+
+    // sepolia
+    // simulate with: forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $SEPOLIA_RPC_URL --chain-id 11155111 -vv
+    // broadcast to network: forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $SEPOLIA_RPC_URL --chain-id 11155111 -vv --broadcast
 
     // zora
-    // forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $ZORA_RPC_URL --chain-id 7777777 -vv
+    // simulate with: forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $ZORA_RPC_URL --chain-id 7777777 -vv
+    // broadcast tp network: forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $ZORA_RPC_URL --chain-id 7777777 -vv --broadcast
+
+    // polygon
+    // simulate with: forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $POLYGON_RPC_URL --chain-id 137 -vv
+    // broadcast tp network: forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $POLYGON_RPC_URL --chain-id 137 -vv --broadcast
 
     // base
-    // forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $BASE_RPC_URL chain-id 8453 -vv
+    // simulate with: forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $BASE_RPC_URL chain-id 8453 -vv
+    // broadcast tp network: forge script script/CreateRescue.s.sol:CreateRescueScript --rpc-url $BASE_RPC_URL chain-id 8453 -vv --broadcast
 
     function setUp() public {
         console2.log("marka.balance", marka.balance); // might need to fund this wallet on other networks
         uint256 nonce = vm.getNonce(marka);
-        // emit log_uint(nonce); // 0
         console2.log("nonce", nonce);
-
         console2.log("target contract address balance", targetContractAddress.balance);
     }
 
