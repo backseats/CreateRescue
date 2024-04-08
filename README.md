@@ -56,6 +56,10 @@ contract Withdraw {
 
 https://book.getfoundry.sh/
 
+### Acknowledgements
+
+Thank you to OptimizationFans (specifically WOK, Michael Amadi, and boredretard.eth) for their help as well.
+
 ### Contribution Instructions
 
 Feel free to create a Pull Request or an Issue if necessary.
