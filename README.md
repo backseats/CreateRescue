@@ -56,6 +56,10 @@ contract Withdraw {
 
 * See notes in the `test` and `script` dirs on how to run each.
 
+### If you need to airdrop ETH back to people
+
+[Gaslite Drop](https://drop.gaslite.org/) is a great, gas-efficient resource. Also developed in part by Backseats.
+
 ### Foundry Book (if you need it)
 
 https://book.getfoundry.sh/
