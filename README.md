@@ -1,6 +1,6 @@
 ## CreateRescue
 
-By [Marka.eth](https://twitter.com/marka_eth), [Backseats.eth](https://twitter.com/backseats_eth), and [Jalil.eth]((https://twitter.com/jalil_eth))
+By [Marka.eth](https://twitter.com/marka_eth), [Backseats.eth](https://twitter.com/backseats_eth), and [Jalil.eth](https://twitter.com/jalil_eth)
 
 This repo illustrates how to use Foundry tests and scripts to simulate and deploy a contract to an address that has ETH in it.
 
