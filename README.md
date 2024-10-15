@@ -44,6 +44,28 @@ contract Withdraw {
 }
 ```
 
+### useSwitchChain
+
+You should be enforcing the chain your users are using to interact with your contracts. If you don't already have this, please use something similar to the below. (this is an example from the [wagmi docs](https://wagmi.sh/react/api/hooks/useSwitchChain)
+
+```javascript
+import { useSwitchChain } from 'wagmi'
+
+function App() {
+  const { chains, switchChain } = useSwitchChain()
+
+  return (
+    <div>
+      {chains.map((chain) => (
+        <button key={chain.id} onClick={() => switchChain({ chainId: chain.id })}>
+          {chain.name}
+        </button>
+      ))}
+    </div>
+  )
+}
+```
+
 ### How to run
 
 * Clone the repo
