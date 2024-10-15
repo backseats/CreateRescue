@@ -46,7 +46,7 @@ contract Withdraw {
 
 ### useSwitchChain
 
-You should be enforcing the chain your users are using to interact with your contracts. If you don't already have this, please use something similar to the below. (this is an example from the [wagmi docs](https://wagmi.sh/react/api/hooks/useSwitchChain)
+You should be enforcing the chain your users are using to interact with your contracts. If you don't already have this, please use something similar to the below. (this is an example from the [wagmi docs](https://wagmi.sh/react/api/hooks/useSwitchChain))
 
 ```javascript
 import { useSwitchChain } from 'wagmi'
